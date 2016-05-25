@@ -160,7 +160,7 @@ class AuthorizeRequest extends AbstractRequest
             'AUTOCLOSE' => $this->getAutoClose(),
             'CCNAME' => $this->getCcName(),
             'SHOWLANGUAGES' => $this->getShowLanguages(),
-            'PAYMENTMETHODS' => $this->getPaymentMethods(),
+//            'PAYMENTMETHODS' => $this->getPaymentMethods(), // @TODO Check why payment fails when this param is enabled.
             'DELIVERY' =>   $this->getDelivery(),
             'APPEARANCE' => $this->getAppearance(),
             'VTCONFIG' => $this->getVtConfig(),
