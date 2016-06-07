@@ -28,6 +28,16 @@ class Gateway extends AbstractGateway
         return $this->setParameter('accountId', $value);
     }
 
+    public function setSpPassword($value)
+    {
+        $this->setParameter('spPassword', $value);
+    }
+
+    public function getSpPassword()
+    {
+        return $this->getParameter('spPassword');
+    }
+
     public function getLangId()
     {
         return $this->getParameter('langId');
