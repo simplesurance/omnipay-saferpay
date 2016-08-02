@@ -160,7 +160,7 @@ class AuthorizeRequest extends AbstractRequest
             'AUTOCLOSE' => $this->getAutoClose(),
             'CCNAME' => $this->getCcName(),
             'SHOWLANGUAGES' => $this->getShowLanguages(),
-//            'PAYMENTMETHODS' => $this->getPaymentMethods(), // @TODO Check why payment fails when this param is enabled.
+            'PAYMENTMETHODS' => $this->getPaymentMethods(),
             'DELIVERY' =>   $this->getDelivery(),
             'APPEARANCE' => $this->getAppearance(),
             'VTCONFIG' => $this->getVtConfig(),
@@ -168,14 +168,17 @@ class AuthorizeRequest extends AbstractRequest
             'USERNOTIFY' => $this->getUserNotify(),
             'LANGID' => $this->getLangId(),
             'DURATION' => $this->getDuration(),
-            'CARDREFID' => $this->getCardRefId(),
-            'RECURRING' => $this->getRecurring()
         );
 
         if (extension_loaded('mbstring')) {
             $data['DESCRIPTION'] = mb_convert_encoding($this->getDescription(), 'HTML-ENTITIES', 'UTF-8');
         } else {
             $data['DESCRIPTION'] = $this->getDescription();
+        }
+
+        if ('yes' === $this->getRecurring()) {
+            $data['CARDREFID'] = $this->getCardRefId();
+            $data['RECURRING'] = $this->getRecurring();
         }
 
         return $data;
