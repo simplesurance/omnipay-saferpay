@@ -17,6 +17,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('accountId', $value);
     }
 
+    public function setSpPassword($value)
+    {
+        $this->setParameter('spPassword', $value);
+    }
+
+    public function getSpPassword()
+    {
+        return $this->getParameter('spPassword');
+    }
+
     public function send()
     {
         $url = $this->getEndpoint().'?'.http_build_query($this->getData());

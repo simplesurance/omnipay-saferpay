@@ -126,6 +126,26 @@ class AuthorizeRequest extends AbstractRequest
         return $this->setParameter('duration', $value);
     }
 
+    public function getCardRefId()
+    {
+        return $this->getParameter('cardRefId');
+    }
+
+    public function setCardRefId($value)
+    {
+        return $this->setParameter('cardRefId', $value);
+    }
+
+    public function getRecurring()
+    {
+        return $this->getParameter('recurring');
+    }
+
+    public function setRecurring($value)
+    {
+        return $this->setParameter('recurring', $value);
+    }
+
     public function getData()
     {
         $data = array(
@@ -140,7 +160,7 @@ class AuthorizeRequest extends AbstractRequest
             'AUTOCLOSE' => $this->getAutoClose(),
             'CCNAME' => $this->getCcName(),
             'SHOWLANGUAGES' => $this->getShowLanguages(),
-            'PAYMENTMETHODS' => $this->getPaymentMethods(),
+//            'PAYMENTMETHODS' => $this->getPaymentMethods(), // @TODO Check why payment fails when this param is enabled.
             'DELIVERY' =>   $this->getDelivery(),
             'APPEARANCE' => $this->getAppearance(),
             'VTCONFIG' => $this->getVtConfig(),
@@ -148,6 +168,8 @@ class AuthorizeRequest extends AbstractRequest
             'USERNOTIFY' => $this->getUserNotify(),
             'LANGID' => $this->getLangId(),
             'DURATION' => $this->getDuration(),
+            'CARDREFID' => $this->getCardRefId(),
+            'RECURRING' => $this->getRecurring()
         );
 
         if (extension_loaded('mbstring')) {
