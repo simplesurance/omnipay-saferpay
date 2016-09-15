@@ -146,6 +146,16 @@ class AuthorizeRequest extends AbstractRequest
         return $this->setParameter('recurring', $value);
     }
 
+    public function getCustomerEmail()
+    {
+        return $this->getParameter('customerEmail');
+    }
+
+    public function setCustomerEmail($value)
+    {
+        return $this->setParameter('customerEmail', $value);
+    }
+
     public function getData()
     {
         $data = array(
@@ -168,6 +178,7 @@ class AuthorizeRequest extends AbstractRequest
             'USERNOTIFY' => $this->getUserNotify(),
             'LANGID' => $this->getLangId(),
             'DURATION' => $this->getDuration(),
+            'EMAIL' => $this->getCustomerEmail()
         );
 
         if (extension_loaded('mbstring')) {
