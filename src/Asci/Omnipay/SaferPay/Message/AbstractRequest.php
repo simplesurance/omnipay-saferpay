@@ -4,8 +4,10 @@ namespace Asci\Omnipay\SaferPay\Message;
 
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
-    const BASE_URL = 'https://www.saferpay.com/hosting/';
-    const BASE_URL_TEST = 'https://test.saferpay.com/hosting/';
+    private const BASE_URL = 'https://www.saferpay.com/hosting/';
+    private const BASE_URL_TEST = 'https://test.saferpay.com/hosting/';
+
+    protected $endpoint;
 
     public function getAccountId()
     {
@@ -30,7 +32,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function send()
     {
         $url = $this->getEndpoint().'?'.http_build_query($this->getData());
-        $httpResponse = $this->httpClient->get($url)->send();
+        $httpResponse = $this->httpClient->request('GET', $url);
 
         return $this->createResponse($httpResponse);
     }
