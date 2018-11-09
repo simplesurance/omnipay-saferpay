@@ -15,7 +15,7 @@
         "psr-0": { "Asci" : "src/" }
     },
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.1",
         "omnipay/common": "~3.0"
     },
     "require-dev": {
